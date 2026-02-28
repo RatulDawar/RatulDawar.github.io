@@ -117,17 +117,10 @@ The addresses don't lie. Without padding, both counters share cache line #958695
 
 I ran each version 3 times with 100 million atomic operations:
 
-**Unpadded (False Sharing):**
-- Run 1: 803ms
-- Run 2: 733ms  
-- Run 3: 719ms
-- **Average: 752ms**
-
-**Padded (No False Sharing):**
-- Run 1: 169ms
-- Run 2: 167ms
-- Run 3: 164ms  
-- **Average: 167ms**
+| Version | Run 1 | Run 2 | Run 3 | Average | Speedup |
+|---------|-------|-------|-------|---------|---------|
+| **Unpadded (False Sharing)** | 803ms | 733ms | 719ms | **752ms** | 1.0x |
+| **Padded (No False Sharing)** | 169ms | 167ms | 164ms | **167ms** | **4.5x** |
 
 **Result: 4.5x faster with padding**
 
@@ -139,9 +132,10 @@ On macOS, I used Instruments with the CPU Counters profiling template. It sample
 
 I profiled both versions and extracted the raw counter data:
 
-**Cache-Related Counter Samples:**
-- **Unpadded:** 238,430 samples (289x more)
-- **Padded:** 824 samples (baseline)
+| Version | Cache Coherency Samples | Difference |
+|---------|-------------------------|------------|
+| **Unpadded** | 238,430 samples | 289x more |
+| **Padded** | 824 samples | baseline |
 
 That's **289 times more cache coherency events** in the unpadded version.
 
@@ -242,27 +236,16 @@ The demo will show you:
 - Performance comparison (unpadded vs padded)
 - Real-time benchmark results
 
-## The Results Summary
+## The Results Table
 
 Here's the complete comparison:
 
-**Execution Time:**
-- Unpadded: 752ms
-- Padded: 167ms
-- **Result: 4.5x faster**
-
-**Cache Line Distance:**
-- Unpadded: 8 bytes (same cache line)
-- Padded: 64 bytes (separate cache lines)
-
-**Cache Coherency Events:**
-- Unpadded: 238,430 events
-- Padded: 824 events
-- **Result: 289x fewer**
-
-**Memory Cost:**
-- Unpadded: 16 bytes
-- Padded: 128 bytes (+112 bytes overhead)
+| Metric | Unpadded | Padded | Improvement |
+|--------|----------|--------|-------------|
+| **Execution Time** | 752ms | 167ms | **4.5x faster** |
+| **Cache Line Distance** | 8 bytes | 64 bytes | Separate lines |
+| **Cache Coherency Events** | 238,430 | 824 | **289x fewer** |
+| **Memory Cost** | 16 bytes | 128 bytes | +112 bytes |
 
 ## Why This Matters
 
