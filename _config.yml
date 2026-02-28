@@ -1,0 +1,11 @@
+title: Ratul Dawar
+description: Systems programming, performance optimization, and Rust experiments
+theme: minima
+url: "https://ratuldawar.github.io"
+
+markdown: kramdown
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
