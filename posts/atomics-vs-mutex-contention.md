@@ -107,6 +107,32 @@ So atomic cost was concentrated in one heavily contended instruction; mutex cost
 
 ![Mutex flamegraph (1M x 8 threads)](/posts/assets/mutex-1m-8t.svg)
 
+## Difference: Atomics vs Mutex Lock
+
+Both are synchronization tools, but they solve different problems.
+
+### Atomic operations
+
+- Operate on a single value (or a few values) with hardware-level guarantees
+- No blocking lock acquisition in the API
+- Very fast under low contention
+- Can become a bottleneck when many threads update one shared location
+- Best for counters, flags, state bits, and lock-free primitives
+
+### Mutex lock
+
+- Protects a critical section (multiple operations/data fields together)
+- Threads may wait (spin/park/wake) when lock is contended
+- More overhead per operation than a simple atomic increment
+- Often easier to write correctly for multi-step shared-state updates
+- Can outperform naive atomics in extreme single-location contention
+
+### Rule of thumb
+
+- Use atomics for simple independent state changes
+- Use mutex when correctness needs multi-step/compound updates
+- For high-throughput counters, prefer sharding or per-thread aggregation over one global hot variable
+
 ## Practical Takeaways
 
 1. Atomics are not automatically faster under all contention levels.
