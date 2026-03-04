@@ -93,6 +93,8 @@ The hotspot was dominated by:
 
 That is the atomic RMW instruction itself, matching the "contended atomic" hypothesis.
 
+![Atomic flamegraph (1M x 8 threads)](/posts/assets/atomic-1m-8t.svg)
+
 ### Mutex flamegraph
 
 Time was spread across lock paths:
@@ -102,6 +104,8 @@ Time was spread across lock paths:
 - futex/syscall paths
 
 So atomic cost was concentrated in one heavily contended instruction; mutex cost was distributed across lock arbitration.
+
+![Mutex flamegraph (1M x 8 threads)](/posts/assets/mutex-1m-8t.svg)
 
 ## Practical Takeaways
 
