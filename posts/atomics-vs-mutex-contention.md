@@ -111,27 +111,15 @@ So atomic cost was concentrated in one heavily contended instruction; mutex cost
 
 Both are synchronization tools, but they solve different problems.
 
-### Atomic operations
-
-- Operate on a single value (or a few values) with hardware-level guarantees
-- No blocking lock acquisition in the API
-- Very fast under low contention
-- Can become a bottleneck when many threads update one shared location
-- Best for counters, flags, state bits, and lock-free primitives
-
-### Mutex lock
-
-- Protects a critical section (multiple operations/data fields together)
-- Threads may wait (spin/park/wake) when lock is contended
-- More overhead per operation than a simple atomic increment
-- Often easier to write correctly for multi-step shared-state updates
-- Can outperform naive atomics in extreme single-location contention
-
-### Rule of thumb
-
-- Use atomics for simple independent state changes
-- Use mutex when correctness needs multi-step/compound updates
-- For high-throughput counters, prefer sharding or per-thread aggregation over one global hot variable
+| Aspect | Atomics | Mutex Lock |
+|--------|---------|------------|
+| Scope | Single value / primitive operations | Critical section over one or more shared values |
+| Blocking behavior | No lock acquisition API; operation executes atomically | Can block/wait when lock is contended (spin/park/wake) |
+| Low-contention cost | Usually lower overhead | Usually higher overhead per operation |
+| High-contention behavior | Can bottleneck badly on one hot location (cache-line ping-pong) | Can sometimes outperform naive atomics by arbitration/serialization |
+| Correctness model | Harder for multi-step state transitions | Easier for compound shared-state updates |
+| Typical use | Counters, flags, state bits, lock-free primitives | Multi-step shared data mutations requiring mutual exclusion |
+| Rule of thumb | Use for simple independent state changes | Use when correctness needs compound updates |
 
 ## Practical Takeaways
 
