@@ -103,14 +103,6 @@ Time was spread across lock paths:
 
 So atomic cost was concentrated in one heavily contended instruction; mutex cost was distributed across lock arbitration.
 
-## "But I'm Not Reading, Only Updating"
-
-This is a common misconception.
-
-Atomic increment still requires read-modify-write semantics in hardware, and therefore exclusive cache-line ownership.
-
-So even update-only workloads can be dominated by coherence handoffs.
-
 ## What About Cache-Miss Counters?
 
 I attempted direct `perf stat` cache events (`cache-misses`, etc.) on EC2 free-tier VM types.
