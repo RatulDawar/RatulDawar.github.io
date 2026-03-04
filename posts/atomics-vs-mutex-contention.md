@@ -103,14 +103,6 @@ Time was spread across lock paths:
 
 So atomic cost was concentrated in one heavily contended instruction; mutex cost was distributed across lock arbitration.
 
-## What About Cache-Miss Counters?
-
-I attempted direct `perf stat` cache events (`cache-misses`, etc.) on EC2 free-tier VM types.
-
-Those instances did not expose full PMU hardware counters to the guest, so many events were reported as not supported.
-
-I used macOS CPU Counters (`xctrace`) as a local PMU-style workaround for additional profiling.
-
 ## Practical Takeaways
 
 1. Atomics are not automatically faster under all contention levels.
