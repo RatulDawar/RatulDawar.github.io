@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Tokio vs std::thread::spawn in Rust: Which Is Better, and When?"
+title: "Async Runtimes vs Threads in Rust: Which Is Better, and When?"
 date: 2026-03-10
 categories: rust performance systems-programming concurrency async
 ---
 
-# Tokio vs std::thread::spawn in Rust: Which Is Better, and When?
+# Async Runtimes vs Threads in Rust: Which Is Better, and When?
 
 What if I told you Tokio beat `std::thread::spawn` by about **34x** when the work was tiny, but that advantage mostly disappeared once the workload became pure CPU?
 
