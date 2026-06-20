@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: post
 title: "Atomics vs Mutex in Rust: Why Mutex Won Under Heavy Contention"
 date: 2026-03-04
 categories: rust performance systems-programming concurrency
+permalink: /posts/atomics-vs-mutex-contention/
 ---
 
 # Atomics vs Mutex in Rust: Why Mutex Won Under Heavy Contention

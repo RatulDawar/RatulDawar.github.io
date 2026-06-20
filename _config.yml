@@ -2,6 +2,7 @@ title: Ratul Dawar
 description: Systems programming, performance optimization, and Rust experiments
 theme: minima
 url: "https://ratuldawar.github.io"
+author: Ratul Dawar
 
 markdown: kramdown
 highlighter: rouge
@@ -10,6 +11,14 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# Limit top nav links; otherwise Minima auto-includes all titled pages.
 header_pages:
   - index.md
+
+minima:
+  skin: auto
+  social_links:
+    - platform: github
+      user_url: https://github.com/RatulDawar
+
+sass:
+  style: compressed

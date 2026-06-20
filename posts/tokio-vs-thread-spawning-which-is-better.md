@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: post
 title: "Async Runtimes vs Threads in Rust: Which Is Better, and When?"
 date: 2026-03-10
 categories: rust performance systems-programming concurrency async
+permalink: /posts/tokio-vs-thread-spawning-which-is-better/
 ---
 
 # Async Runtimes vs Threads in Rust: Which Is Better, and When?

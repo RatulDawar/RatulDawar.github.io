@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: post
 title: "Zero-Copy Strings in Apache DataFusion: How StringViewArray Boosted Performance by 8%"
 date: 2026-04-19
 categories: rust performance systems-programming
+permalink: /posts/datafusion-string-view-performance/
 ---
 
 # Zero-Copy Strings in Apache DataFusion: How StringViewArray Boosted Performance by 8%

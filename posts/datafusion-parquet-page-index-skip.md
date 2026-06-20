@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: post
 title: "Inside a DataFusion Parquet Scan: Skipping Page Index I/O When Statistics Already Decide"
 date: 2026-06-20
 categories: rust performance systems-programming
+permalink: /posts/datafusion-parquet-page-index-skip/
 ---
 
 # Inside a DataFusion Parquet Scan: Skipping Page Index I/O When Statistics Already Decide

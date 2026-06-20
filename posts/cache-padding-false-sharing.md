@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: post
 title: "The Hidden Performance Killer: How 56 Bytes of Padding Made My Rust Code 4.6x Faster"
 date: 2026-02-28
 categories: rust performance systems-programming
+permalink: /posts/cache-padding-false-sharing/
 ---
 
 # The Hidden Performance Killer: How 56 Bytes of Padding Made My Rust Code 4.6x Faster
